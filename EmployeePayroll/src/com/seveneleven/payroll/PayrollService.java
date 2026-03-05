@@ -7,7 +7,7 @@ public class PayrollService {
         salaryComponents.pf = basic * 0.12;   
         salaryComponents.tax = gross * 0.10; 
         salaryComponents.netPay = gross - (salaryComponents.pf + salaryComponents.tax);
-        return new Payslip(employee, salaryComponents, month);
+        return new Payslip(employee.getEmpID(), employee.getName(), month,salaryComponents.netPay);
     }
 }
 
