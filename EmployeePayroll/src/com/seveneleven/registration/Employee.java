@@ -21,4 +21,12 @@ public class Employee {
 	     fw.write(this.toString() + "\n");
 	     fw.close();
 	}
+	public String getEmpID() {
+		// TODO Auto-generated method stub
+		return empID;
+	}
+	public String getName() {
+		// TODO Auto-generated method stub
+		return name;
+	}
 }
