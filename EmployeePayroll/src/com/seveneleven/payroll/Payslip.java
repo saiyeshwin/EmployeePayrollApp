@@ -1,13 +1,5 @@
 package com.seveneleven.payroll;
-
-/*
- * UC4: Immutable Payslip
- * - Represents finalized salary record
- * - Supports cloning for download
- */
-
 public final class Payslip implements Cloneable {
-
     private final String empId;
     private final String empName;
     private final String month;
@@ -35,23 +27,15 @@ public final class Payslip implements Cloneable {
     public double getNetPay() {
         return netPay;
     }
-
-    /* UC4: Create safe copy for printing/downloading */
     public Payslip clone() {
         return new Payslip(empId, empName, month, netPay);
     }
-
-    /* UC4: Check equality using employee ID + month */
     public boolean equals(Payslip p) {
         return empId.equals(p.empId) && month.equals(p.month);
     }
-
-    /* UC4: Hashcode for object comparison */
     public int hashCode() {
         return empId.hashCode() + month.hashCode();
     }
-
-    /* UC4: Format payslip output */
     public String toString() {
         return "PAYSLIP\n"
                 + "Employee ID : " + empId + "\n"
