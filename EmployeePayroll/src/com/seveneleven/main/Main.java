@@ -31,6 +31,8 @@ public class Main {
             String username = sc.nextLine();
             System.out.print("Create Password: ");
             String password = sc.nextLine();
+            System.out.print("Enter role(Employee/Manager):");
+			String role=sc.nextLine();
             UserAccount account = new UserAccount(username, password);
             Employee employee = new Employee(empId, name, phone, email, account);
             employee.persist();
@@ -38,7 +40,7 @@ public class Main {
             System.out.println(employee);
 
             AuthenticationService auth = new AuthenticationService();
-            auth.registerUser(username, password, "EMPLOYEE");
+            auth.registerUser(username, password,role);
             System.out.println("\nLogin");
             Session session = auth.login(sc);
             if (session != null) {
