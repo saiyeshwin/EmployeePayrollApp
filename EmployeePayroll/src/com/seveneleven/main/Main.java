@@ -5,6 +5,8 @@
 package com.seveneleven.main;
 import java.io.IOException;
 import java.util.Scanner;
+
+import com.seveneleven.authentication.*;
 import com.seveneleven.registration.*;
 public class Main {
 	public static void main(String[] args) {
@@ -26,11 +28,20 @@ public class Main {
 			String username=sc.nextLine();
 			System.out.print("Create Password: ");
 			String password=sc.nextLine();
+			System.out.print("Enter role(Employee/Manager):");
+			String role=sc.nextLine();
 			UserAccount userAccount=new UserAccount(username, password);
-			Employee employee=new Employee(empId, name, email, phone, userAccount);
+			Employee employee=new Employee(empId, name, phone, email, userAccount);
 			employee.persist();
 			System.out.println("\nEmployee Registered Successfully!\n");
 			System.out.println(employee);
+			AuthenticationService auth = new AuthenticationService();
+			auth.registerUser(username, password, role);
+			System.out.println("\nLogin");
+		    Session session = auth.login(sc);
+		    if(session != null)
+		            System.out.println(session);
+
 		} 
 		catch (ValidationException e) {
 			System.out.println("\nValidation Failed:" + e.getMessage());
