@@ -1,5 +1,7 @@
 package com.seveneleven.registration;
 import java.util.regex.*;
+
+import com.seveneleven.validation.ValidationException;
 public class Validator {
 	public static void validateEmail(String email) throws ValidationException{
 		String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";

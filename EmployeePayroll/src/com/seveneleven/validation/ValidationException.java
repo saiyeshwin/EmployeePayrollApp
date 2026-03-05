@@ -1,4 +1,4 @@
-package com.seveneleven.registration;
+package com.seveneleven.validation;
 public class ValidationException extends Exception {
 	public ValidationException(String message) {
 		super(message);

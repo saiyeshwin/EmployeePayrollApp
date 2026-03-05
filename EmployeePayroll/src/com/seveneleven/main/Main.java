@@ -1,7 +1,13 @@
+// Use Case 06: Input Validation
+// Validates email, phone, password and employee ID using centralized validation service
+// @author: Developer
+// @version: 6.0
 package com.seveneleven.main;
 import java.io.IOException;
 import java.util.*;
 import com.seveneleven.registration.*;
+import com.seveneleven.validation.ValidationException;
+import com.seveneleven.validation.ValidationService;
 import com.seveneleven.authentication.*;
 import com.seveneleven.payroll.*;
 import com.seveneleven.dashboard.*;
@@ -12,19 +18,20 @@ public class Main {
             System.out.println("Employee Registartion");
             System.out.print("Enter Employee ID (EMP-XXXX): ");
             String empId = sc.nextLine();
-            Validator.validateEmployeeID(empId);
+            ValidationService.validateEmployeeId(empId);
             System.out.print("Enter Name: ");
             String name = sc.nextLine();
             System.out.print("Enter Email: ");
             String email = sc.nextLine();
-            Validator.validateEmail(email);
+            ValidationService.validateEmail(email);
             System.out.print("Enter Phone: ");
             String phone = sc.nextLine();
-            Validator.validatePhone(phone);
+            ValidationService.validatePhone(phone);
             System.out.print("Create Username: ");
             String username = sc.nextLine();
             System.out.print("Create Password: ");
             String password = sc.nextLine();
+            ValidationService.validatePassword(password);
             System.out.print("Enter Role (EMPLOYEE / MANAGER): ");
             String role = sc.nextLine();
             UserAccount account = new UserAccount(username,password);
@@ -87,9 +94,7 @@ public class Main {
                 payslips.add(new Payslip(empId,name,"Feb 2026",33000));
                 payslips.add(new Payslip(empId,name,"Mar 2026",34000));
                 payslips.add(new Payslip(empId,name,"Apr 2026",35000));
-
                 Dashboard dashboard = DashboardFactory.getDashboard(role);
-
                 if(dashboard!=null){
                     dashboard.display(payslips,employee);
                 }
