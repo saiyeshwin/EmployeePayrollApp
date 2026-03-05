@@ -1,3 +1,7 @@
+// Use Case 05 :Dashboard Display
+// DisplayS recent payslips (top 3) AND Show YTD earnings summary
+// @author: Developer
+// @version: 5.0
 package com.seveneleven.main;
 import java.io.IOException;
 import java.util.*;
